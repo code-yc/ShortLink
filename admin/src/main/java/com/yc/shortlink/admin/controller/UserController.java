@@ -1,6 +1,7 @@
 package com.yc.shortlink.admin.controller;
 
 import com.yc.shortlink.admin.common.convention.result.Result;
+import com.yc.shortlink.admin.common.convention.result.Results;
 import com.yc.shortlink.admin.dto.resp.UserRespDTO;
 import com.yc.shortlink.admin.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -23,11 +24,6 @@ public class UserController {
      */
     @GetMapping("/api/shortlink/v1/user/{username}")
     public Result<UserRespDTO> getUserByUsername(@PathVariable("username") String username) {
-        UserRespDTO result = userService.getUserByUsername(username);
-        if (result == null) {
-            return new Result<UserRespDTO>().setCode("-1").setMessage("用户查询为空");
-        } else {
-            return new Result<UserRespDTO>().setCode("0").setData(result);
-        }
+        return Results.success(userService.getUserByUsername(username));
     }
 }
