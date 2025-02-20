@@ -2,6 +2,7 @@ package com.yc.shortlink.admin.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.yc.shortlink.admin.dao.entity.UserDO;
+import com.yc.shortlink.admin.dto.req.UserRegisterReqDTO;
 import com.yc.shortlink.admin.dto.resp.UserRespDTO;
 
 /**
@@ -21,4 +22,11 @@ public interface UserService extends IService<UserDO> {
      * @return 用户名存在返回 True，不存在返回 False
      */
     Boolean hasUsername(String username);
+
+    /**
+     * 注册用户
+     * @param requestParam 注册用户请求参数
+     */
+    void register(UserRegisterReqDTO requestParam);
+
 }
